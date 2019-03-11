@@ -30,4 +30,23 @@ public class Quick{
       return start - 1;
     }
   }
+
+  /*return the value that is the kth smallest value of the array.
+ */
+ public static int quickselect(int[]data, int k){
+   int s = 0;
+   int e = data.length - 1;
+   int i = partition(data, s, e);
+   while(i != k){
+     if (i < k){
+       s = i+1;
+       i = partition(data,s,e);
+     } else {
+       e = i-1;
+       i = partition(data,s,e);
+     }
+   }
+   return data[k];
+ }
+
 }
