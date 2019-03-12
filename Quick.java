@@ -3,9 +3,10 @@ import java.util.Arrays;
 public class Quick{
 
   public static int partition(int[] data, int start, int end){
+    int i = start;
+    int j = end;
     int random = (int)(Math.random() * (end-start));
     //System.out.println("random : "+random);
-    int ori = start;
     int temp = data[random + start];
     //System.out.println("temp: " + temp);
     if (data.length <= 1){
@@ -14,31 +15,31 @@ public class Quick{
     data[random + start] = data[start];
     //System.out.println(Arrays.toString(data));
     data[start] = temp;
-    while (start != end){
+    while (i != j){
       //System.out.println(Arrays.toString(data));
-      if (data[start] > data[ori]){
-        temp = data[start];
-        data[start] = data[end];
-        data[end] = temp;
-        end--;
+      if (data[i] > data[start]){
+        temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
+        j--;
       }else {
-        start++;
+        i++;
       }
     }
     //System.out.println("start:"+start);
-    if (data[ori] >= data[start]){
-      temp = data[ori];
-      data[ori] = data[start];
-      data[start] = temp;
-      return start;
+    if (data[start] >= data[i]){
+      temp = data[start];
+      data[start] = data[i];
+      data[i] = temp;
+      return i;
     } else {
-      if (start == 0){
+      if (i == 0){
         return 0;
       }
-      temp = data[ori];
-      data[ori] = data[start-1];
-      data[start-1] = temp;
-      return start - 1;
+      temp = data[start];
+      data[start] = data[i-1];
+      data[i-1] = temp;
+      return i - 1;
     }
   }
 
