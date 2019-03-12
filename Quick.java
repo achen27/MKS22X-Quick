@@ -26,14 +26,14 @@ public class Quick{
       }
     }
     System.out.println("start:"+start);
-    if (data[ori] > data[start]){
+    if (data[ori] >= data[start]){
       temp = data[ori];
       data[ori] = data[start];
       data[start] = temp;
       return start;
     } else {
       if (start == 0){
-        return start;
+        return 0;
       }
       temp = data[ori];
       data[ori] = data[start-1];
@@ -49,8 +49,8 @@ public class Quick{
    int e = data.length - 1;
    int i = partition(data, s, e);
    System.out.println("i: "+i);
-   while(i != k){
-     System.out.println("loop start: " +Arrays.toString(data));
+   while(i != k && s != e){
+     System.out.println("loop start: " +Arrays.toString(data) + " i: "+i);
      if (i < k){
        System.out.println("i<k, s: " + s + ", e: "+e);
        s = i+1;
@@ -67,12 +67,12 @@ public class Quick{
 
  public static void main(String[] args){
    int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
-   System.out.println(quickselect( ary , 0 ));// would return 0
+   //System.out.println(quickselect( ary , 0 ));// would return 0
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
    //System.out.println(quickselect( ary , 4 ));//  would return 15
-   //System.out.println(quickselect( ary , 5 ));//  would return 23
+   System.out.println(quickselect( ary , 5 ));//  would return 23
    /*for (int i = 1; i < 6; i++){
      System.out.println(partition(ary,0,i));
      System.out.println(Arrays.toString(ary));
