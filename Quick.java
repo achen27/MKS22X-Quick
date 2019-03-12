@@ -7,7 +7,7 @@ public class Quick{
     //System.out.println("random : "+random);
     int ori = start;
     int temp = data[random + start];
-    System.out.println("temp: " + temp);
+    //System.out.println("temp: " + temp);
     if (data.length <= 1){
       return 0;
     }
@@ -25,7 +25,7 @@ public class Quick{
         start++;
       }
     }
-    System.out.println("start:"+start);
+    //System.out.println("start:"+start);
     if (data[ori] >= data[start]){
       temp = data[ori];
       data[ori] = data[start];
@@ -48,20 +48,20 @@ public class Quick{
    int s = 0;
    int e = data.length - 1;
    int i = partition(data, s, e);
-   System.out.println("i: "+i);
+   //System.out.println("i: "+i);
    while(i != k && s != e){
-     System.out.println("loop start: " +Arrays.toString(data) + " i: "+i);
+     //System.out.println("loop start: " +Arrays.toString(data) + " i: "+i);
      if (i < k){
-       System.out.println("i<k, s: " + s + ", e: "+e);
+       //System.out.println("i<k, s: " + s + ", e: "+e);
        s = i+1;
        i = partition(data,s,e);
      } else {
-       System.out.println("i>=k, s: " + s + ", e: "+e);
+       //System.out.println("i>=k, s: " + s + ", e: "+e);
        e = i-1;
        i = partition(data,s,e);
      }
    }
-   System.out.println("loop end: " +Arrays.toString(data));
+   //System.out.println("loop end: " +Arrays.toString(data));
    return data[k];
  }
 
