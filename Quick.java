@@ -3,15 +3,15 @@ import java.util.Arrays;
 public class Quick{
 
   public static int partition(int[] data, int start, int end){
+    if (end-start < 1){
+      return start;
+    }
     int i = start;
     int j = end;
     int random = (int)(Math.random() * (j-i));
     //System.out.println("random : "+random);
     int temp = data[random + i];
     //System.out.println("temp: " + temp);
-    if (data.length <= 1){
-      return start;
-    }
     data[random + i] = data[start];
     //System.out.println(Arrays.toString(data));
     data[start] = temp;
@@ -36,16 +36,18 @@ public class Quick{
         i++;
       }
     }
-    //System.out.println("start:"+start);
-    if (data[start] >= data[i]){
+    //System.out.println("i:"+i);
+    if (data[start] > data[i]){
       temp = data[start];
       data[start] = data[i];
       data[i] = temp;
+      //System.out.println("iia:"+i);
       return i;
     } else {
       temp = data[start];
       data[start] = data[i-1];
       data[i-1] = temp;
+      //System.out.println("iib:"+i);
       return i - 1;
     }
   }
@@ -56,17 +58,19 @@ public class Quick{
    int s = 0;
    int e = data.length - 1;
    int i = partition(data, s, e);
-   //System.out.println("i: "+i);
+   //System.out.println("iii: "+i);
    while(i != k && s != e){
      //System.out.println("loop start: " +Arrays.toString(data) + " i: "+i);
      if (i < k){
-       //System.out.println("i<k, s: " + s + ", e: "+e);
+       //System.out.println("1.i<k, s: " + s + ", e: "+e+", k: "+k+", i: "+i);
        s = i+1;
        i = partition(data,s,e);
+       //System.out.println("2.i<k, s: " + s + ", e: "+e+", k: "+k+", i: "+i);
      } else {
-       //System.out.println("i>=k, s: " + s + ", e: "+e);
+       //System.out.println("i>=k, s: " + s + ", e: "+e+", k: "+k+", i: "+i);
        e = i-1;
        i = partition(data,s,e);
+       //System.out.println("i>=k, s: " + s + ", e: "+e+", k: "+k+", i: "+i);
      }
    }
    //System.out.println("loop end: " +Arrays.toString(data));
@@ -80,11 +84,11 @@ public class Quick{
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
-   //System.out.println(quickselect( ary , 4 ));//  would return 15
+   System.out.println(quickselect( ary , 4 ));//  would return 15
    //System.out.println(quickselect( ary , 5 ));//  would return 23
    //for (int i = 1; i < 6; i++){
-     System.out.println(partition(ary,0,ary.length-1));
-     System.out.println(Arrays.toString(ary));
+     //System.out.println(partition(ary,0,ary.length-1));
+     //System.out.println(Arrays.toString(ary));
    //}
  }
 
