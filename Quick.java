@@ -5,16 +5,17 @@ public class Quick{
   public static int partition(int[] data, int start, int end){
     int i = start;
     int j = end;
-    int random = (int)(Math.random() * (end-start));
+    int random = (int)(Math.random() * (j-i));
     //System.out.println("random : "+random);
-    int temp = data[random + start];
+    int temp = data[random + i];
     //System.out.println("temp: " + temp);
     if (data.length <= 1){
-      return 0;
+      return start;
     }
-    data[random + start] = data[start];
+    data[random + i] = data[start];
     //System.out.println(Arrays.toString(data));
     data[start] = temp;
+    i++;
     while (i != j){
       //System.out.println(Arrays.toString(data));
       if (data[i] > data[start]){
@@ -22,7 +23,16 @@ public class Quick{
         data[i] = data[j];
         data[j] = temp;
         j--;
-      }else {
+      } else if (data[i] == data[start]){
+        if ((int)(Math.random() + .5) == 0){
+          temp = data[i];
+          data[i] = data[j];
+          data[j] = temp;
+          j--;
+        } else {
+          i++;
+        }
+      } else {
         i++;
       }
     }
@@ -33,9 +43,6 @@ public class Quick{
       data[i] = temp;
       return i;
     } else {
-      if (i == 0){
-        return 0;
-      }
       temp = data[start];
       data[start] = data[i-1];
       data[i-1] = temp;
@@ -67,17 +74,18 @@ public class Quick{
  }
 
  public static void main(String[] args){
-   int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
+   int[]ary = {2, 10, 15, 23, 0, 5};  //sorted :  {0,2,5,10,15,23}
+   //for (int i = 0; i < 10; i++ ){System.out.println((int)(Math.random() + .5));}
    //System.out.println(quickselect( ary , 0 ));// would return 0
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
    //System.out.println(quickselect( ary , 4 ));//  would return 15
-   System.out.println(quickselect( ary , 5 ));//  would return 23
-   /*for (int i = 1; i < 6; i++){
-     System.out.println(partition(ary,0,i));
+   //System.out.println(quickselect( ary , 5 ));//  would return 23
+   //for (int i = 1; i < 6; i++){
+     System.out.println(partition(ary,0,ary.length-1));
      System.out.println(Arrays.toString(ary));
-   }*/
+   //}
  }
 
 
