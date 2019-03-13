@@ -129,6 +129,21 @@ public class Quick{
         i++;
       }
     }
+    if (data[lo] > data[lt]){
+      temp = data[lo];
+      data[lo] = data[lt];
+      data[lt] = temp;
+      int[] output = {lt,gt};
+      //System.out.println("iia:"+i);
+      return output;
+    } else {
+      temp = data[lo];
+      data[lo] = data[lt-1];
+      data[lt-1] = temp;
+      int[] output = {lt,gt};
+      //System.out.println("iib:"+i);
+      return output;
+    }
     //return an array [lt,gt]
 }
 
