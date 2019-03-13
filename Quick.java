@@ -2,17 +2,27 @@ import java.util.Arrays;
 
 public class Quick{
 
-  public int partition(int[] data, int start, int end){
+  public static int partition(int[] data, int start, int end){
     if (end-start < 1){
       return start;
     }
     int i = start;
     int j = end;
-    int random = (int)(Math.random() * (j-i));
+    int middle = (int)(Math.random() * (j-i));
     //System.out.println("random : "+random);
-    int temp = data[random + i];
+    int pivot = middle;
+    if (data[i] >= data[j] && data[j] >= data[middle]){
+      pivot = j;
+    } else if (data[i] <= data[j] && data[j] <= data[middle]){
+      pivot = j;
+    } else if (data[j] >= data[i] && data[i] >= data[middle]){
+      pivot = i;
+    } else if (data[j] <= data[i] && data[i] <= data[middle]){
+      pivot = i;
+    }
+    int temp = data[j];
     //System.out.println("temp: " + temp);
-    data[random + i] = data[start];
+    data[pivot] = data[start];
     //System.out.println(Arrays.toString(data));
     data[start] = temp;
     i++;
@@ -54,7 +64,7 @@ public class Quick{
 
   /*return the value that is the kth smallest value of the array.
  */
- public int quickselect(int[]data, int k){
+ public static int quickselect(int[]data, int k){
    int s = 0;
    int e = data.length - 1;
    int i = partition(data, s, e);
@@ -79,11 +89,11 @@ public class Quick{
 
  /*Modify the array to be in increasing order.
  */
- public void quicksort(int[] data){
+ public static void quicksort(int[] data){
    sortH(data,0,data.length-1);
  }
 
- public void sortH(int[] data, int lo, int hi){
+ public static void sortH(int[] data, int lo, int hi){
    if (lo >= hi){
      return;
    }
