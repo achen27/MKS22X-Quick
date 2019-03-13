@@ -112,6 +112,23 @@ public class Quick{
     //System.out.println(Arrays.toString(data));
     data[lo] = temp;
     i++;
+    lt++;
+    while (i != gt){
+      if (data[i] > data[gt]){
+        temp = data[gt];
+        data[gt] = data[i];
+        data[i] = temp;
+        gt--;
+      } else if (data[i] == data[gt]){
+        temp = data[i];
+        data[i] = data[lt];
+        data[lt] = temp;
+        i++;
+      } else {
+        lt++;
+        i++;
+      }
+    }
     //return an array [lt,gt]
 }
 
