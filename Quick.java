@@ -20,7 +20,7 @@ public class Quick{
     } else if (data[j] <= data[i] && data[i] <= data[middle]){
       pivot = i;
     }
-    int temp = data[j];
+    int temp = data[pivot];
     //System.out.println("temp: " + temp);
     data[pivot] = data[start];
     //System.out.println(Arrays.toString(data));
@@ -105,7 +105,7 @@ public class Quick{
  public static void main(String[] args){
    int[]ary = {2, 10, 15, 23, 0, 5};  //sorted :  {0,2,5,10,15,23}
    //for (int i = 0; i < 10; i++ ){System.out.println((int)(Math.random() + .5));}
-   //System.out.println(quickselect( ary , 0 ));// would return 0
+   System.out.println(quickselect( ary , 0 ));// would return 0
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
