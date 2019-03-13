@@ -102,6 +102,15 @@ public class Quick{
    sortH(data,lo,pivot-1);
  }
 
+ public static void sortH2(int[] data, int lo, int hi){
+   if (lo >= hi){
+     return;
+   }
+   int[] center = partitionDutch(data,lo,hi);
+   sortH2(data,center[0]+1,hi);
+   sortH2(data,lo,center[1]-1);
+ }
+
  private static int[] partitionDutch(int[] data, int lo, int hi){
     int lt = lo;
     int gt = hi;
