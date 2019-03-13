@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Quick{
 
-  public static int partition(int[] data, int start, int end){
+  public int partition(int[] data, int start, int end){
     if (end-start < 1){
       return start;
     }
@@ -54,7 +54,7 @@ public class Quick{
 
   /*return the value that is the kth smallest value of the array.
  */
- public static int quickselect(int[]data, int k){
+ public int quickselect(int[]data, int k){
    int s = 0;
    int e = data.length - 1;
    int i = partition(data, s, e);
@@ -77,6 +77,21 @@ public class Quick{
    return data[k];
  }
 
+ /*Modify the array to be in increasing order.
+ */
+ public void quicksort(int[] data){
+   sortH(data,0,data.length-1);
+ }
+
+ public void sortH(int[] data, int lo, int hi){
+   if (lo >= hi){
+     return;
+   }
+   int pivot = partition(data,lo,hi);
+   sortH(data,pivot+1,hi);
+   sortH(data,lo,pivot-1);
+ }
+
  public static void main(String[] args){
    int[]ary = {2, 10, 15, 23, 0, 5};  //sorted :  {0,2,5,10,15,23}
    //for (int i = 0; i < 10; i++ ){System.out.println((int)(Math.random() + .5));}
@@ -84,7 +99,7 @@ public class Quick{
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
-   System.out.println(quickselect( ary , 4 ));//  would return 15
+   //System.out.println(Quick.quickselect( ary , 4 ));//  would return 15
    //System.out.println(quickselect( ary , 5 ));//  would return 23
    //for (int i = 1; i < 6; i++){
      //System.out.println(partition(ary,0,ary.length-1));
