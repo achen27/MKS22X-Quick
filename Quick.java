@@ -102,10 +102,23 @@ public class Quick{
    sortH(data,lo,pivot-1);
  }
 
+ private static int[] partitionDutch(int[] data, int lo, int hi){
+    int lt = lo;
+    int gt = hi;
+    int i = lo;
+    int pivot = (int)(Math.random() * (hi-lo));
+    int temp = data[pivot];
+    data[pivot] = data[lo];
+    //System.out.println(Arrays.toString(data));
+    data[lo] = temp;
+    i++;
+    //return an array [lt,gt]
+}
+
  public static void main(String[] args){
    int[]ary = {2, 10, 15, 23, 0, 5};  //sorted :  {0,2,5,10,15,23}
    //for (int i = 0; i < 10; i++ ){System.out.println((int)(Math.random() + .5));}
-   System.out.println(quickselect( ary , 0 ));// would return 0
+   //System.out.println(quickselect( ary , 0 ));// would return 0
    //System.out.println(quickselect( ary , 1 ));//  would return 2
    //System.out.println(quickselect( ary , 2 ));//  would return 5
    //System.out.println(quickselect( ary , 3 ));//   would return 10
