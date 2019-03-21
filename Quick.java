@@ -10,15 +10,15 @@ public class Quick{
     int j = end;
     int middle = (i+j)/2;
     //System.out.println("random : "+random);
-    int pivot = middle; //changes pivot to median on start, end, and middle values
-    if (data[i] >= data[j] && data[j] >= data[middle]){
+    int pivot = start; //changes pivot to median on start, end, and middle values
+    if (data[i] > data[j] && data[j] >= data[middle]){
       pivot = j;
-    } else if (data[i] <= data[j] && data[j] <= data[middle]){
+    } else if (data[i] < data[j] && data[j] <= data[middle]){
       pivot = j;
-    } else if (data[j] >= data[i] && data[i] >= data[middle]){
-      pivot = i;
-    } else if (data[j] <= data[i] && data[i] <= data[middle]){
-      pivot = i;
+    } else if (data[j] >= data[middle] && data[middle] > data[i]){
+      pivot = middle;
+    } else if (data[j] < data[middle] && data[middle] <= data[i]){
+      pivot = middle;
     }
     int temp = data[pivot]; //swaps pivot to beginning
     //System.out.println("temp: " + temp);
@@ -94,13 +94,27 @@ public class Quick{
  }
 
  public static void sortH(int[] data, int lo, int hi){
-   if (lo >= hi){ //only 1 int
-     return;
-   }
+   //if (hi - lo >= 10){ //only 1 int
+     //insertionsort(data,lo,hi);
+  if (lo >= hi){
+    return;
+  }
    int pivot = partition(data,lo,hi); //places one value in proper position
    sortH(data,pivot+1,hi); //sorts right side
    sortH(data,lo,pivot-1); //sorts left side
  }
+
+ public static void insertionsort(int[] data, int lo, int hi){
+    for (int i = lo+1; i <= hi; i++){
+      int temp = data[i];
+      int j = i;
+      while (j > lo && data[j-1] > temp){
+        data[j] = data[j-1];
+        j--;
+      }
+      data[j] = temp;
+    }
+  }
 
  public static void sortH2(int[] data, int lo, int hi){
    if (lo >= hi){
