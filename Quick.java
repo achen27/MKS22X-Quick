@@ -94,14 +94,15 @@ public class Quick{
  }
 
  public static void sortH(int[] data, int lo, int hi){
-   //if (hi - lo >= 10){ //only 1 int
-     //insertionsort(data,lo,hi);
-  if (lo >= hi){
-    return;
-  }
-   int pivot = partition(data,lo,hi); //places one value in proper position
-   sortH(data,pivot+1,hi); //sorts right side
-   sortH(data,lo,pivot-1); //sorts left side
+   if (hi - lo <= 70){ //threshold
+     insertionsort(data,lo,hi);
+  //if (lo >= hi){
+    //return;
+  } else {
+     int pivot = partition(data,lo,hi); //places one value in proper position
+     sortH(data,pivot+1,hi); //sorts right side
+     sortH(data,lo,pivot-1); //sorts left side
+   }
  }
 
  public static void insertionsort(int[] data, int lo, int hi){
@@ -177,7 +178,7 @@ public static void main(String[]args){
      long qtime=0;
      long btime=0;
      //average of 5 sorts.
-     for(int trial = 0 ; trial <=5; trial++){
+     for(int trial = 0 ; trial <=10; trial++){
        int []data1 = new int[size];
        int []data2 = new int[size];
        for(int i = 0; i < data1.length; i++){
@@ -202,6 +203,11 @@ public static void main(String[]args){
    }
    System.out.println();
  }
+ /*int[] ary = {5,6,7,4,33,2,59,9,6,4,5,33,3};
+
+ System.out.println(Arrays.toString(ary));
+ insertionsort(ary,0, 12);
+ System.out.println(Arrays.toString(ary));*/
 }
 
 
