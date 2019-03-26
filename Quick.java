@@ -1,14 +1,12 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class Quick{
 
   public static int partition(int[] data, int start, int end){
-    if (end-start < 1){ //returns start is size is less than 2
-      return start;
-    }
+    Random r = new Random();
     int i = start;
     int j = end;
-    int middle = (i+j)/2;
+    int middle = (int)(Math.random()*(end-start)+start);
     int pivot = start; //changes pivot to median on start, end, and middle values
     if (data[i] > data[j] && data[j] >= data[middle]){
       pivot = j;
@@ -23,7 +21,7 @@ public class Quick{
     data[pivot] = data[start];
     data[start] = temp;
     i++;
-    
+
     while (i != j){ //loops through array and swaps when i is > or = to the pivot
       if (data[i] > data[start]){
         temp = data[i];
@@ -102,7 +100,7 @@ public class Quick{
     }
   }
 
- public static void sortH2(int[] data, int lo, int hi){
+ private static void sortH2(int[] data, int lo, int hi){
    if (lo >= hi){
      return;
    }
@@ -160,7 +158,7 @@ public static void main(String[]args){
      long qtime=0;
      long btime=0;
      //average of 5 sorts.
-     for(int trial = 0 ; trial <=10; trial++){
+     for(int trial = 0 ; trial <=5; trial++){
        int []data1 = new int[size];
        int []data2 = new int[size];
        for(int i = 0; i < data1.length; i++){
@@ -185,10 +183,15 @@ public static void main(String[]args){
    }
    System.out.println();
  }
- /*int[] ary = {5,6,7,4,33,2,59,9,6,4,5,33,3};
+ int[] ary = new int[100];
+ for (int i = 0; i < ary.length; i++){
+   ary[i] = (int)(Math.random()*10+1);
+ }
 
+ /*System.out.println(Arrays.toString(ary));
+ insertionsort(ary,0, ary.length-1);
  System.out.println(Arrays.toString(ary));
- insertionsort(ary,0, 12);
+ System.out.println(Arrays.toString(partitionDutch(ary,0,ary.length-1)));
  System.out.println(Arrays.toString(ary));*/
 }
 
