@@ -6,7 +6,7 @@ public class Quick{
     Random r = new Random();
     int i = start;
     int j = end;
-    int middle = (int)(Math.random()*(end-start)+start);
+    int middle = r.nextInt(end-start+1)+start;
     int pivot = start; //changes pivot to median on start, end, and middle values
     if (data[i] > data[j] && data[j] >= data[middle]){
       pivot = j;
@@ -22,14 +22,14 @@ public class Quick{
     data[start] = temp;
     i++;
 
-    while (i != j){ //loops through array and swaps when i is > or = to the pivot
+    while (i <= j){ //loops through array and swaps when i is > or = to the pivot
       if (data[i] > data[start]){
         temp = data[i];
         data[i] = data[j];
         data[j] = temp;
         j--;
       } else if (data[i] == data[start]){
-        if ((int)(Math.random() + .5 ) == 0){
+        if (r.nextInt(2) == 0){
           temp = data[i];
           data[i] = data[j];
           data[j] = temp;
